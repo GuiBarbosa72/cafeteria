@@ -1,0 +1,54 @@
+### 1. Listar Categorias (200 OK)
+GET http://localhost:8080/api/categorias
+
+### 2. Criar Categoria (201 Created)
+POST http://localhost:8080/api/categorias
+Content-Type: application/json
+
+{
+  "nome": "Bebidas Geladas",
+  "descricao": "Cold brews, frappés e sodas italianas",
+  "ativa": true
+}
+
+### 3. Consultar Produto por ID (200 OK)
+GET http://localhost:8080/api/produtos/1
+
+### 4. Testar Validação de Produto Inválido (400 Bad Request)
+POST http://localhost:8080/api/produtos
+Content-Type: application/json
+
+{
+  "nome": "",
+  "preco": -5.00,
+  "categoria": { "id": 1 }
+}
+
+### 5. Consultar Recurso Inexistente (404 Not Found)
+GET http://localhost:8080/api/clientes/9999
+
+### 6. Atualizar Mesa (200 OK)
+PUT http://localhost:8080/api/mesas/1
+Content-Type: application/json
+
+{
+  "numero": 1,
+  "capacidade": 2,
+  "status": "RESERVADA"
+}
+
+### 7. Criar Pedido (201 Created)
+POST http://localhost:8080/api/pedidos
+Content-Type: application/json
+
+{
+  "cliente": { "id": 1 },
+  "mesa": { "id": 1 },
+  "produto": { "id": 1 },
+  "quantidade": 2,
+  "observacoes": "Quente",
+  "status": "ABERTO"
+}
+
+### 8. Excluir Pedido (204 No Content)
+DELETE http://localhost:8080/api/pedidos/1
